@@ -1,0 +1,10 @@
+/src
+/.husky
+/.github
+/.env
+/.env.sample
+/.eslintrc.js
+/.prettierrc
+/babel.config.js
+/tsconfig.build.json
+/tsconfig.json

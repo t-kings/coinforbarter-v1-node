@@ -1,0 +1,85 @@
+export type TransactionResponse = {
+  id: string;
+  status: string;
+  description: string;
+  txRef: string;
+  redirectUrl: string;
+  paymentPlan: string;
+  meta: Record<string, any>;
+  fee: number;
+  currency: string;
+  currencyNetwork: string;
+  amount: number;
+  nairaValue: number;
+  dollarValue: number;
+  amountReceived: number;
+  baseAmount: number;
+  baseCurrency: string;
+  currencies: string[];
+  paymentRef: string;
+  transactionFees: number;
+  totalDue: number;
+  customer: string;
+  customerDetails: Record<string, any>;
+  addressInformation: Record<string, any>;
+  addressSentFrom: Record<string, any>;
+  transactionTimeLog: Record<string, any>[];
+  isCurrencyLocked: boolean;
+  createdAt: string;
+};
+
+export type TransactionQuery = {
+  from?: string;
+  to?: string;
+  page?: number;
+  currency?: string;
+  status?: string;
+  minAmount?: number;
+  maxAmount?: number;
+  customer?: string;
+  isAscending?: boolean;
+  skip?: number;
+  sort?: string;
+};
+
+export type TransactionFeeResponse = {
+  fee: number;
+  currency: string;
+  currencyNetwork: string;
+  amount: number;
+  nairaValue: number;
+  dollarValue: number;
+  amountReceived: number;
+  baseAmount: number;
+  baseCurrency: number;
+};
+
+export type TransactionVerifyResponse = {
+  id: string;
+  status: string;
+  description: string;
+  txRef: string;
+  redirectUrl: string;
+  paymentPlan: string;
+  meta: Record<string, any>;
+  fee: number;
+  currency: string;
+  currencyNetwork: string;
+  amount: number;
+  nairaValue: number;
+  dollarValue: number;
+  amountReceived: number;
+  baseAmount: number;
+  baseCurrency: string;
+  currencies: string[];
+  paymentRef: string;
+  transactionFees: number;
+  totalDue: number;
+  customer: string;
+  customerDetails: Record<string, any>;
+  addressInformation: Record<string, any>;
+  addressSentFrom: Record<string, any>;
+  transactionTimeLog: Record<string, any>[];
+  isCurrencyLocked: boolean;
+  createdAt: string;
+};

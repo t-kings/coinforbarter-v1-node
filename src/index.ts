@@ -28,10 +28,10 @@ export default class CoinForBarter {
   private readonly Request: CoinForBarterRequest;
   constructor(
     private readonly publicKey: string,
-    private readonly secretKey: string,
+    private readonly privateKey: string,
     private readonly secretHash: string = '',
   ) {
-    this.Request = new CoinForBarterRequest(this.publicKey, this.secretKey);
+    this.Request = new CoinForBarterRequest(this.publicKey, this.privateKey);
     this.Payment = new Payment(this.Request, this.publicKey);
     this.Payout = new Payout(this.Request);
     this.Transfer = new Transfer(this.Request);
@@ -41,6 +41,7 @@ export default class CoinForBarter {
     this.BankAccount = new BankAccount(this.Request);
     this.Customer = new Customer(this.Request);
     this.Misc = new Misc(this.Request);
+    this.Transaction = new Transaction(this.Request);
     this.Webhook = new Webhook(this.secretHash);
   }
 }

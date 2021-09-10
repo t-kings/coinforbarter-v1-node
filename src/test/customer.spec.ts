@@ -5,12 +5,12 @@ import { CoinForBarterRequest } from '../services';
 
 describe('customer', () => {
   const publicKey = process.env.PUBLIC_KEY;
-  const secretKey = process.env.SECRET_KEY;
+  const privateKey = process.env.PRIVATE_KEY;
 
   const email = process.env.EMAIL;
   const phoneNumber = process.env.PHONE_NUMBER;
   const fullName = process.env.EMAIL;
-  const request = new CoinForBarterRequest(publicKey, secretKey);
+  const request = new CoinForBarterRequest(publicKey, privateKey);
 
   const customer = new Customer(request);
 

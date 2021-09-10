@@ -9,11 +9,13 @@ import {
 
 describe('BankAccount', () => {
   const publicKey = process.env.PUBLIC_KEY;
-  const secretKey = process.env.SECRET_KEY;
+  const privateKey = process.env.PRIVATE_KEY;
 
-  const request = new CoinForBarterRequest(publicKey, secretKey);
+  const request = new CoinForBarterRequest(publicKey, privateKey);
 
   const bankAccount = new BankAccount(request);
+
+  let bankAccountId = '';
 
   it('should be defined', () => {
     expect(bankAccount).toBeDefined();
@@ -85,6 +87,7 @@ describe('BankAccount', () => {
       const respWithParam = await bankAccount.findAll(param);
       const resp = await bankAccount.findAll();
       if (resp.status === CoinForBarterStatus.Success) {
+        bankAccountId = resp.data[0].id;
         expect(resp.data.length).toBeGreaterThan(0);
       } else {
         expect(resp.statusCode).toEqual(404);
@@ -103,10 +106,9 @@ describe('BankAccount', () => {
     });
 
     it('should find one bank account from id', async () => {
-      const id = process.env.BANK_ACCOUNT_ID;
-      const resp = await bankAccount.findOne(id);
+      const resp = await bankAccount.findOne(bankAccountId);
       if (resp.status === CoinForBarterStatus.Success) {
-        return expect(resp.data.id).toBe(id);
+        return expect(resp.data.id).toBe(bankAccountId);
       } else {
         expect(resp.statusCode).not.toEqual(200);
       }
@@ -142,6 +144,21 @@ describe('BankAccount', () => {
         return expect(resp.data.length).toBeGreaterThan(0);
       } else {
         return expect(resp.statusCode).toEqual(404);
+      }
+    });
+  });
+
+  describe('remove', () => {
+    it('should be defined', () => {
+      expect(bankAccount.remove).toBeDefined();
+    });
+
+    it('should make an account primary', async () => {
+      const resp = await bankAccount.remove(bankAccountId);
+      if (resp.status === CoinForBarterStatus.Success) {
+        return expect(resp.statusCode).toEqual(204);
+      } else {
+        return expect(resp.statusCode).not.toEqual(200);
       }
     });
   });

@@ -5,9 +5,9 @@ import { CoinForBarterStatus } from '../types/response.types';
 
 describe('Payment', () => {
   const publicKey = process.env.PUBLIC_KEY;
-  const secretKey = process.env.SECRET_KEY;
+  const privateKey = process.env.PRIVATE_KEY;
 
-  const request = new CoinForBarterRequest(publicKey, secretKey);
+  const request = new CoinForBarterRequest(publicKey, privateKey);
   const id = process.env.PAYMENT_ID;
 
   const currency = 'DOGE';

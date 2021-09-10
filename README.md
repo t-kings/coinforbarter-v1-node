@@ -1,45 +1,111 @@
-# CoinForBarter V1 NodeJs Library
+# CoinForBarter NodeJs Library
 
-### How to use
+CoinForBarter Nodejs Library - Integrate and Manage cryptocurrency payments for goods and services
 
-<cd>npm install coinforbarter      -node-sdk</cd>
+![License, MIT](https://img.shields.io/badge/licence-MIT-black) ![npm, coinforbarter-node](https://img.shields.io/badge/npm-npm%20install%20coinforbarter--node-green) ![yarn, coinforbarter-node](https://img.shields.io/badge/yarn-yarn%20add%20coinforbarter--node-red)
 
+## Table of Contents
+---
+  - [About](#about)
+  - [Getting Started](#getting-started)
+    - [Installation](#installation)
+  - [Usage](#usage)
+  - [Services and Methods](#services-and-methods)
+  - [Deployment](#deployment)
+  - [Built Using](#built-using)
+  - [CoinForBarter API References](#coinforbarter-api-references)
+
+
+## About
+---
+This is a NodeJs package for implementing CoinForBarter.
+
+## Getting Started
+---
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system. See references for links to dashboard and API documentation.
+
+## Installation
+---
 ```bash
-const CoinForBarter = require('coinforbarter      -node-v3');
+$ npm install coinforbarter-node
 
-const c4b = new CoinForBarter(PUBLIC_KEY, SECRET_KEY, SECRET_HASH);
+# or
+$ yarn add coinforbarter-node
 
-const customers = c4b.Customers.findAll();
 ```
 
-For staging, Use TEST API Keys. For production, use LIVE API KEYS. You can get your PUBLIC_KEY and SECRET_KEY from the CoinForBarter dashboard.
 
-Go [here](https://dashboard.coinforbarter.com/settings/api) to get your API Keys.
+## Usage
+---
+```bash
+const CoinForBarter = require('coinforbarter-node');
 
+const publicKey = 'xxxxxxxxxxxxx';
+const privateKey = 'xxxxxxxxxxxxx';
+const secretHash = 'xxxxxxxxxxxxx';
+const coinforbarter = new CoinForBarter(publicKey, privateKey, secretHash);
 
-Turn on Test Mode to get TEST API KEYS and Turn off Test Mode to get LIVE API KEYS
-
-## CoinForBarter Services exposed by the library
-
-1.  #### Customer
-      ##### Methods
-      - findAll
-      - findOne
-      - create
-      - update
-
-
-2.  #### BankAccount
-      ##### Methods
-      - getBankAccountName
-      - create
-      - findAll
-      - findOne
-      - makePrimary
-      - getBanks
+# An example to get all customers
+const customers = coinforbarter.Customer.findAll();
+```
 
 
-3.  #### Payment
+## Services and Methods
+---
+
+1.  ### Customer
+This method handles all customers related to your account. The methods exposed by this service are listed below. [See customer object properties](https://developers.coinforbarter.com/api-reference/#customers-get-all-customers)
+- #### findAll
+This method gets the list of all customers.
+```bash
+const query = {};
+const getAllCustomers = async () => { 
+      return await coinforbarter.Customer.findAll(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#customers-get-all-customers)
+
+- #### findOne
+This method gets a particular customer by id.
+```bash
+const query = {};
+const customerId = '';
+const getCustomer = async (customerId) => { 
+      return await coinforbarter.Customer.findOne(customerId);
+}
+```
+
+- #### create
+This method creates a customer.
+```bash
+const params = {};
+const createCustomer = async (params) => { 
+      return await coinforbarter.Customer.create(params);
+}
+```
+See  [customer parameters](https://developers.coinforbarter.com/api-reference/#customers-create-customer)
+
+- #### update
+This method updates a customer.
+```bash
+const params = {};
+const createCustomer = async (params) => { 
+      return await coinforbarter.Customer.update(params);
+}
+```
+See  [customer update parameters](https://developers.coinforbarter.com/api-reference/#customers-update)
+
+
+1.  ### BankAccount
+- getBankAccountName
+- create
+- findAll
+- findOne
+- makePrimary
+- getBanks
+
+
+1.  #### Payment
       ##### Methods
       - findOne
       - findAll
@@ -50,7 +116,7 @@ Turn on Test Mode to get TEST API KEYS and Turn off Test Mode to get LIVE API KE
       - cancel
 
 
-4.  #### PaymentPlan
+2.  #### PaymentPlan
       ##### Methods
       - findAll
       - findOne
@@ -58,7 +124,7 @@ Turn on Test Mode to get TEST API KEYS and Turn off Test Mode to get LIVE API KE
       - update
 
 
-5.  #### PaymentPlanSubscriber
+3.  #### PaymentPlanSubscriber
       ##### Methods
       - create
       - findOne
@@ -66,13 +132,13 @@ Turn on Test Mode to get TEST API KEYS and Turn off Test Mode to get LIVE API KE
       - remove
 
 
-6.  #### Payout
+4.  #### Payout
       ##### Methods
       - findAll
       - findOne
 
 
-7.  #### Transaction
+5.  #### Transaction
       ##### Methods
       - findAll
       - findOne
@@ -82,7 +148,7 @@ Turn on Test Mode to get TEST API KEYS and Turn off Test Mode to get LIVE API KE
       - webhook
 
 
-8.  #### Transfer
+6.  #### Transfer
       ##### Methods
       - findAll
       - findOne
@@ -90,7 +156,7 @@ Turn on Test Mode to get TEST API KEYS and Turn off Test Mode to get LIVE API KE
       - getFee
 
 
-9.  #### WalletAddress
+7.  #### WalletAddress
       ##### Methods
       - create
       - findAll
@@ -98,19 +164,19 @@ Turn on Test Mode to get TEST API KEYS and Turn off Test Mode to get LIVE API KE
       - makePrimary
 
 
-10. ####  Webhook
+8.  ####  Webhook
       ##### Methods
       - validate
 
 
-11. #### Misc
+9.  #### Misc
       ##### Methods
       - getCountries
       - getBalance
       - getCurrencies
 
 
-All methods can be called this way
+This SDK can be used closely with the official [API Reference](https://developers.coinforbarter.com/api-reference). All services and methods can be called this way
 
 ```bash
 
@@ -125,21 +191,28 @@ i.e
     [service]:method
  }
 
-
+# I will do more on documenting each method till i can complete it 😂
 ```
-<cd>Some methods may take body data or query params in objects</cd>
-
-For more information on the services listed above, visit the [CoinForBarter documentation](https://developers.coinforbarter.com)
 
 
-CoinForBarter V1 NodeJs Library is an MIT      -licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://developers.coinforbarter.com).
 
-## Stay in touch
+## Built Using
+---
+- Typescript
 
-      - Author - [Nwachukwu, Kingsley Tochukwu](https://linkedin.com/in/t-kings)
-      - Website - [https://coinforbarter.com](https://coinforbarter.com/)
-      - Twitter - [@t-kings](https://twitter.com/t-kings)
 
-## License
+## CoinForBarter API References
+- [CoinForBarter Developers Doc](https://developers.coinforbarter.com)
+- [CoinForBarter API Reference](https://developers.coinforbarter.com/api-reference/)
+- [CoinForBarter Inline Payment Doc](https://developers.coinforbarter.com/docs/integration-options-coinforbarter-inline/)
+- [CoinForBarter Dashboard](https://dashboard.coinforbarter.com)
 
-CoinForBarter is [MIT licensed](LICENSE).
+## Stay in Touch
+
+- Author - [Nwachukwu, Kingsley Tochukwu](https://linkedin.com/in/tkings)
+- Twitter - [@tkings_](https://twitter.com/tkings_)
+- Github - [t-kings](https://github.com/tkings)
+
+Contributions are open, meta properties are not being returned yet by this SDK. You can send me an email via [tochukwu@coinforbarter.com](mailto:tochukwu@coinforbarter.com)
+
+

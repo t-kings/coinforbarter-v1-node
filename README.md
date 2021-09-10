@@ -7,12 +7,12 @@
 ```bash
 const CoinForBarter = require('coinforbarter      -node-v3');
 
-const c4b = new CoinForBarter(PUBLIC_KEY, SECRET_KEY, SECRET_HASH);
+const c4b = new CoinForBarter(PUBLIC_KEY, PRIVATE_KEY, SECRET_HASH);
 
 const customers = c4b.Customers.findAll();
 ```
 
-For staging, Use TEST API Keys. For production, use LIVE API KEYS. You can get your PUBLIC_KEY and SECRET_KEY from the CoinForBarter dashboard.
+For staging, Use TEST API Keys. For production, use LIVE API KEYS. You can get your PUBLIC_KEY and PRIVATE_KEY from the CoinForBarter dashboard.
 
 Go [here](https://dashboard.coinforbarter.com/settings/api) to get your API Keys.
 

@@ -3,10 +3,10 @@ import { CoinForBarterStatus } from '../types';
 import { RequestResponseSchema } from '../types/request';
 
 export class CoinForBarterRequest {
-  private url = 'https://api.coinforbarter.com/v1';
+  private url = 'https://coinforbarter-api.herokuapp.com/v1';
   constructor(
     private readonly publicKey: string,
-    private readonly secretKey: string,
+    private readonly privateKey: string,
   ) {}
 
   async call(
@@ -22,7 +22,7 @@ export class CoinForBarterRequest {
       if (method === 'get' || method === 'delete') {
         if (useToken) {
           const headers = {
-            Authorization: `Bearer ${this.secretKey}`,
+            Authorization: `Bearer ${this.privateKey}`,
             'Content-Type': contentType,
           };
           request = await axios[method](url, { headers });
@@ -37,7 +37,7 @@ export class CoinForBarterRequest {
       if (method !== 'get' && method !== 'delete') {
         if (useToken) {
           const headers = {
-            Authorization: `Bearer ${this.secretKey}`,
+            Authorization: `Bearer ${this.privateKey}`,
             'Content-Type': contentType,
           };
           request = await axios[method](url, body, { headers });

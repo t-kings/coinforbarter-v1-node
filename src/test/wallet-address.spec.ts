@@ -8,9 +8,9 @@ import { CoinForBarterStatus } from '../types/response.types';
 
 describe('WalletAddress', () => {
   const publicKey = process.env.PUBLIC_KEY;
-  const secretKey = process.env.SECRET_KEY;
+  const privateKey = process.env.PRIVATE_KEY;
 
-  const request = new CoinForBarterRequest(publicKey, secretKey);
+  const request = new CoinForBarterRequest(publicKey, privateKey);
 
   const walletAddress = new WalletAddress(request);
 

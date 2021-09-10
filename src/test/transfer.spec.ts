@@ -8,12 +8,12 @@ import { CoinForBarterStatus } from '../types/response.types';
 
 describe('Transfer', () => {
   const publicKey = process.env.PUBLIC_KEY;
-  const secretKey = process.env.SECRET_KEY;
+  const privateKey = process.env.PRIVATE_KEY;
   const accountNumber = process.env.ACCOUNT_NUMBER;
   const walletAddress = process.env.WALLET_ADDRESS;
   const walletNetwork = process.env.WALLET_NETWORK;
 
-  const request = new CoinForBarterRequest(publicKey, secretKey);
+  const request = new CoinForBarterRequest(publicKey, privateKey);
 
   const transfer = new Transfer(request);
 

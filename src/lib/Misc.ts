@@ -18,7 +18,7 @@ export class Misc {
     return { status, message, statusCode, data };
   }
 
-  async getBalance(): Promise<CoinForBarterResponse<BalanceResponse[]>> {
+  async getBalances(): Promise<CoinForBarterResponse<BalanceResponse[]>> {
     const { status, message, statusCode, data } = await this.request.call(
       '/balances',
       'get',

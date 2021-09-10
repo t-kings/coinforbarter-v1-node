@@ -59,3 +59,9 @@ export {
 } from './transaction.type';
 
 export { PaymentDto, CreatePaymentBody } from './payments.type';
+
+export {
+  WalletQuery,
+  CreateWalletBody,
+  CreateWalletResponse,
+} from './wallet.type';

@@ -107,4 +107,19 @@ export class BankAccount {
       statusCode,
     };
   }
+
+  async remove(bankAccountId: string) {
+    const { data, status, message, statusCode } = await this.request.call(
+      `${this.path}/account/archive/${bankAccountId}`,
+      'get',
+      {},
+      true,
+    );
+    return {
+      data,
+      status,
+      message,
+      statusCode,
+    };
+  }
 }

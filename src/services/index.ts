@@ -1,1 +1,1 @@
-export { CoinForBarterRequest } from './request';
+export { CoinForBarterRequest } from './Request';

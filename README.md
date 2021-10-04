@@ -55,6 +55,7 @@ const customers = coinforbarter.Customer.findAll();
 
 1.  ### Customer
 This method handles all customers related to your account. The methods exposed by this service are listed below. [See customer object properties](https://developers.coinforbarter.com/api-reference/#customers-get-all-customers)
+
 - #### findAll
 This method gets the list of all customers.
 ```bash
@@ -74,6 +75,7 @@ const getCustomer = async (customerId) => {
       return await coinforbarter.Customer.findOne(customerId);
 }
 ```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#customers-get-a-customer)
 
 - #### create
 This method creates a customer.
@@ -89,91 +91,442 @@ See  [customer parameters](https://developers.coinforbarter.com/api-reference/#c
 This method updates a customer.
 ```bash
 const params = {};
-const createCustomer = async (params) => { 
+const updateCustomer = async (params) => { 
       return await coinforbarter.Customer.update(params);
 }
 ```
 See  [customer update parameters](https://developers.coinforbarter.com/api-reference/#customers-update)
 
 
-1.  ### BankAccount
-- getBankAccountName
-- create
-- findAll
-- findOne
-- makePrimary
-- getBanks
+2.  ### BankAccount
+This method handles all bank account related to your account. The methods exposed by this service are listed below. [See bank account object properties](https://developers.coinforbarter.com/api-reference/#bank-accounts)
+
+- #### getBankAccountName
+```bash
+const query = {};
+const getBankAccountName = async () => { 
+      return await coinforbarter.BankAccount.getBankAccountName(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#bank-accounts-get-account-name)
+
+- #### create
+```bash
+const parms = {};
+const createBankAccount = async (parms) => { 
+      return await coinforbarter.BankAccount.create(parms);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#bank-accounts-create)
+
+- #### findAll
+This method gets the list of all bank accounts.
+```bash
+const query = {};
+const getAllBankAccounts = async () => { 
+      return await coinforbarter.BankAccount.findAll(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#bank-accounts-get-all)
+
+- #### findOne
+```bash
+const query = {};
+const bankAccountId = '';
+const getBankAccount = async (bankAccountId) => { 
+      return await coinforbarter.BankAccount.findOne(bankAccountId);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#bank-accounts-get-one)
+
+- #### makePrimary
+```bash
+const parms = {};
+const bankAccountId = '';
+const makePrimary = async (bankAccountId) => { 
+      return await coinforbarter.BankAccount.makePrimary(bankAccountId);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#bank-accounts-make-primary)
+
+- #### getBanks
+```bash
+const query = {};
+const countryCode = '';
+const getBank = async (countryCode) => { 
+      return await coinforbarter.BankAccount.getBanks(countryCode);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#bank-accounts-all-banks)
 
 
-1.  #### Payment
-      ##### Methods
-      - findOne
-      - findAll
-      - create
-      - setCurrency
-      - lockCurrency
-      - getPaymentUpdates
-      - cancel
+3.  ### Payment
+This method handles all payments related to your account. The methods exposed by this service are listed below. [See payment object properties](https://developers.coinforbarter.com/api-reference/#payments)
+
+- #### findOne
+```bash
+const query = {};
+const paymentId = '';
+const getPayment = async (paymentId) => { 
+      return await coinforbarter.Payment.findOne(paymentId);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#payments-get-one)
+
+- #### create
+```bash
+const params = {};
+const createPayment = async (params) => { 
+      return await coinforbarter.Payment.create(params);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#payments-create)
+
+- #### setCurrency
+```bash
+const params = {};
+const setCurrency = async (params) => { 
+      return await coinforbarter.Payment.setCurrency(params);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#payments-set-currency)
+
+- #### lockCurrency
+```bash
+const paymentId = '';
+const lockCurrency = async (paymentId) => { 
+      return await coinforbarter.Payment.lockCurrency(paymentId);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#payments-lock-currency)
+
+- #### getPaymentUpdates
+```bash
+const query = {};
+const getAllBankAccount = async () => { 
+      return await coinforbarter.Payment.getPaymentUpdates(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#bank-accounts-all-banks)
+
+- #### cancel
+```bash
+const query = {};
+const paymentId = async () => { 
+      return await coinforbarter.Payment.cancel(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#bank-accounts-all-banks)
 
 
-2.  #### PaymentPlan
-      ##### Methods
-      - findAll
-      - findOne
-      - create
-      - update
+4.  ### PaymentPlan
+
+- #### findAll
+```bash
+const query = {};
+const getAllPaymentPlan = async () => { 
+      return await coinforbarter.PaymentPlan.findAll(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#payment-plans-find-all)
+
+- #### findOne
+```bash
+const query = {};
+const getPaymentPlan = async () => { 
+      return await coinforbarter.PaymentPlan.findOne(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#payment-plans-find-one)
+
+- #### create
+```bash
+const params = {};
+const createPaymentPlan = async () => { 
+      return await coinforbarter.PaymentPlan.create(params);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#payment-plans-create)
+
+- #### update
+```bash
+const params = {};
+const updatePaymentPlan = async (params) => { 
+      return await coinforbarter.PaymentPlan.update(params);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#payment-plans-update)
 
 
-3.  #### PaymentPlanSubscriber
-      ##### Methods
-      - create
-      - findOne
-      - findAll
-      - remove
+5.  ### PaymentPlanSubscriber
+
+- #### create
+```bash
+const params = {};
+const createPaymentPlanSubscriber = async () => { 
+      return await coinforbarter.PaymentPlanSubscriber.create(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#payment-plan-subscribers-create)
+
+- #### findOne
+```bash
+const query = {};
+const paymentPlanSubscriberId = '';
+const getPaymentPlanSubscriber = async (paymentPlanSubscriberId) => { 
+      return await coinforbarter.PaymentPlanSubscriber.findOne(paymentPlanSubscriberId);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#payment-plan-subscribers-find-one)
+
+- #### findAll
+```bash
+const query = {};
+const getAllPaymentPlanSubscriber = async () => { 
+      return await coinforbarter.PaymentPlanSubscriber.findAll(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#payment-plan-subscribers-find-all)
+
+- #### remove
+```bash
+const paymentPlanSubscriberId = '';
+const removePaymentPlanSubscriber = async () => { 
+      return await coinforbarter.PaymentPlanSubscriber.remove(paymentPlanSubscriberId);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#payment-plan-subscribers-remove)
 
 
-4.  #### Payout
-      ##### Methods
-      - findAll
-      - findOne
+6.  ### Payout
+
+- #### findAll
+```bash
+const query = {};
+const getAllPayout = async () => { 
+      return await coinforbarter.Payout.findAll(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#payouts-get-all)
+
+- #### findOne
+```bash
+const query = {};
+const payOutId = '';
+const getPayout = async (payOutId) => { 
+      return await coinforbarter.Payout.findOne(payOutId);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#payouts-get-one)
 
 
-5.  #### Transaction
-      ##### Methods
-      - findAll
-      - findOne
-      - verify
-      - events
-      - getFee
-      - webhook
+7.  ### Transaction
+
+- #### findAll
+```bash
+const query = {};
+const getAllTransactions = async () => { 
+      return await coinforbarter.Transaction.findAll(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#transactions-get-all)
+
+- #### findOne
+```bash
+const query = {};
+const transactionId = '';
+const getTransaction = async (transactionId) => { 
+      return await coinforbarter.Transaction.findOne(transactionId);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#transactions-get-one)
+
+- #### verify
+```bash
+const transactionId = '';
+const verifyTransaction = async (transactionId) => { 
+      return await coinforbarter.Transaction.verify(transactionId);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#transactions-verify)
+
+- #### events
+```bash
+const query = {};
+const getEvent = async () => { 
+      return await coinforbarter.Transaction.events(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#transactions-get-transaction-time-log)
+
+- #### getFee
+```bash
+const transactionId = {};
+const getfeeForTransaction = async (transactionId) => { 
+      return await coinforbarter.Transaction.getFee(transactionId);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#transactions-get-fee)
+
+- #### webhook
+```bash
+const transactionId = {};
+const transaction = async (transactionId) => { 
+      return await coinforbarter.Transaction.webhook(transactionId);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#transactions-webhook)
 
 
-6.  #### Transfer
-      ##### Methods
-      - findAll
-      - findOne
-      - create
-      - getFee
+8.  ### Transfer
+
+- #### findAll
+```bash
+const query = {};
+const getAllTransfer = async () => { 
+      return await coinforbarter.Transfer.findAll(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#transfers-get-all)
+
+- #### findOne
+```bash
+const query = {};
+const transferId = '';
+const getTransfer = async (transferId) => { 
+      return await coinforbarter.Transfer.findOne(transferId);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#transfers-get-one)
+
+- #### create
+```bash
+const params = {};
+const createTransfer = async (params) => { 
+      return await coinforbarter.Transfer.findAll(params);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#transfers-create)
+
+- #### getFee
+```bash
+const query = {};
+const getFeeForTransfer = async () => { 
+      return await coinforbarter.Transfer.getFee(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#transfers-get-fee)
 
 
-7.  #### WalletAddress
-      ##### Methods
-      - create
-      - findAll
-      - findOne
-      - makePrimary
+9.  ### WalletAddress
+
+- #### create
+```bash
+const params = {};
+const createWalletAddress = async (params) => { 
+      return await coinforbarter.WalletAddress.create(params);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#wallet-addresses-create)
+
+- #### findAll
+```bash
+const query = {};
+const getAllWalletAddress = async () => { 
+      return await coinforbarter.WalletAddress.findAll(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#wallet-addresses-get-all)
+
+- #### findOne
+```bash
+const query = {};
+const walletId = '';
+const getWalletAddress = async (walletId) => { 
+      return await coinforbarter.WalletAddress.findOne(walletId);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#wallet-addresses-get-one)
+
+- #### makePrimary
+```bash
+const query = {};
+const walletAddressId = '';
+const makeWalletAddressPrimary = async (walletAddressId) => { 
+      return await coinforbarter.WalletAddress.makePrimary(walletAddressId);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#wallet-addresses-make-primary)
 
 
-8.  ####  Webhook
-      ##### Methods
-      - validate
+10.  ###  Wallet
+
+- #### findAll
+```bash
+const query = {};
+const getAllWallet = async () => { 
+      return await coinforbarter.Wallet.findAll(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#wallets-find-all)
+
+- #### findOne
+```bash
+const query = {};
+const walletId = '';
+const getWallet = async (walletId) => { 
+      return await coinforbarter.Wallet.findOne(walletId);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#wallets-find-one)
+
+- #### create
+```bash
+const params = {};
+const createWallet = async (params) => { 
+      return await coinforbarter.Wallet.create(params);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#wallets-create)
+
+- #### delete
+```bash
+const query = {};
+const deleteWallet = async () => { 
+      return await coinforbarter.Wallet.delete(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#wallets-delete)
 
 
-9.  #### Misc
-      ##### Methods
-      - getCountries
-      - getBalance
-      - getCurrencies
+11.  ### Misc
+
+- #### getCountries
+```bash
+const query = {};
+const getCountriesMisc = async () => { 
+      return await coinforbarter.Misc.getCountries(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#misc-get-countries)
+
+- #### getBalance
+```bash
+const query = {};
+const getBalanceMisc = async () => { 
+      return await coinforbarter.Misc.getBalance(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#misc-get-wallet-balances)
+
+- #### getCurrencies
+```bash
+const query = {};
+const getCurrenciesMisc = async () => { 
+      return await coinforbarter.Misc.getCurrencies(query);
+}
+```
+See list of [query parameters](https://developers.coinforbarter.com/api-reference/#misc-get-currencies)
 
 
 This SDK can be used closely with the official [API Reference](https://developers.coinforbarter.com/api-reference). All services and methods can be called this way
